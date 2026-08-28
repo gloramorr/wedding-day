@@ -2,7 +2,19 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;font-size:18px}
-.hero{height:46vh;min-height:390px;background:linear-gradient(rgba(30,55,42,.52),rgba(30,55,42,.52)),url('kyiv-hero.jpg') center/cover;display:grid;place-items:center;position:relative;text-align:center;color:#fff}
+.hero{
+  height:clamp(500px,38vw,720px);
+  min-height:500px;
+  background:
+    linear-gradient(rgba(25,45,35,.48),rgba(25,45,35,.48)),
+    url('kyiv-hero.jpg') center 42% / cover no-repeat;
+  display:grid;
+  place-items:center;
+  position:relative;
+  text-align:center;
+  color:#fff;
+  overflow:hidden;
+}
 .hero-content{position:relative;z-index:1}.hero h1{font-size:clamp(58px,8vw,92px);line-height:.68;margin:0;font-weight:400;letter-spacing:.02em}.hero h1 em{font-size:.62em;font-weight:400}.hero p{font-size:15px;letter-spacing:.28em;margin:28px 0 0}
 .section{padding:48px max(24px,calc((100% - 980px)/2))}
 .intro-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:760px;margin:auto;gap:50px}
@@ -111,7 +123,12 @@ body{margin:0;background:var(--cream);color:var(--ink);font-family:"Cormorant Ga
   font-size:17px;
 }
 footer{background:var(--dark);color:#fff;text-align:center;padding:32px 20px}footer .script{font-size:32px}footer span{font-size:12px;letter-spacing:.22em;opacity:.7}
-@media(max-width:700px){.hero{height:40vh;min-height:340px}.section{padding:38px 20px}.intro-inner{grid-template-columns:1fr;gap:24px}.frame{width:210px;height:250px}.special{margin-top:30px;padding:25px 18px}.timeline{grid-template-columns:1fr;gap:22px}.line{width:60px;height:1px;margin:auto}.details{grid-template-columns:1fr}.details>div:first-child{padding:35px 22px}.stripes{height:70px}.rsvp{grid-template-columns:1fr;gap:20px}.choice>span{width:100%;margin:0}.hero h1{line-height:.72}}
+@media(max-width:700px){
+  .hero{
+    height:430px;
+    min-height:430px;
+    background-position:center 45%;
+  }.section{padding:38px 20px}.intro-inner{grid-template-columns:1fr;gap:24px}.frame{width:210px;height:250px}.special{margin-top:30px;padding:25px 18px}.timeline{grid-template-columns:1fr;gap:22px}.line{width:60px;height:1px;margin:auto}.details{grid-template-columns:1fr}.details>div:first-child{padding:35px 22px}.stripes{height:70px}.rsvp{grid-template-columns:1fr;gap:20px}.choice>span{width:100%;margin:0}.hero h1{line-height:.72}}
 
 .single-date{
   text-align:center;

@@ -1,4 +1,4 @@
-:root{--green:#294637;--dark:#20382c;--cream:#f4eee4;--ink:#294637}
+:root{--green:#5f6f52;--dark:#4d5b43;--cream:#f4eee4;--ink:#4f5f46}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;font-size:18px}

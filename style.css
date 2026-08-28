@@ -7,7 +7,7 @@ body{margin:0;background:var(--cream);color:var(--ink);font-family:"Cormorant Ga
   min-height:500px;
   background:
     linear-gradient(rgba(25,45,35,.48),rgba(25,45,35,.48)),
-    url('kyiv-hero.jpg') center 42% / cover no-repeat;
+    url('kyiv-hero.png') center 42% / cover no-repeat;
   display:grid;
   place-items:center;
   position:relative;

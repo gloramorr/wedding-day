@@ -77,7 +77,8 @@
     <p>Будь ласка, підтвердіть свою присутність до <strong>03.09.2026</strong>.</p>
   </div>
 
-  <form id="rsvpForm">
+  <iframe name="rsvp_sink" id="rsvp_sink" style="display:none;"></iframe>
+  <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbzxwXxhQlsZx8YWnIgkapLFRU1ub7Zgi4JM3WRl3TN35y4GuKaI9w4Tu2Mjbo1YYkpuvg/exec" method="POST" target="rsvp_sink">
     <input name="name" type="text" placeholder="Ім’я та прізвище" required>
 
     <div class="choice">
@@ -104,26 +105,28 @@
 </footer>
 
 <script>
-const RSVP_URL="https://script.google.com/macros/s/AKfycbzxwXxhQlsZx8YWnIgkapLFRU1ub7Zgi4JM3WRl3TN35y4GuKaI9w4Tu2Mjbo1YYkpuvg/exec";
-const form=document.getElementById("rsvpForm");
-const msg=document.getElementById("message");
-const btn=document.getElementById("submitButton");
-form.addEventListener("submit",async(e)=>{
-  e.preventDefault();
-  if(!form.reportValidity()) return;
-  const fd=new FormData(form);
-  const body=new URLSearchParams();
-  ["name","ceremony","dinner","comment"].forEach(k=>body.append(k,fd.get(k)||""));
-  btn.disabled=true; btn.textContent="НАДСИЛАЄМО…"; msg.textContent="";
-  try {
-    await fetch(RSVP_URL,{method:"POST",mode:"no-cors",body});
-    form.reset();
-    msg.innerHTML="Дякуємо 🤍 Ваша відповідь надіслана.";
-  } catch(err) {
-    msg.textContent="Не вдалося надіслати відповідь. Спробуйте ще раз.";
-  } finally {
-    btn.disabled=false; btn.textContent="ПІДТВЕРДИТИ ПРИСУТНІСТЬ";
-  }
+const form = document.getElementById("rsvpForm");
+const msg = document.getElementById("message");
+const btn = document.getElementById("submitButton");
+const sink = document.getElementById("rsvp_sink");
+
+let submitted = false;
+
+form.addEventListener("submit", () => {
+  submitted = true;
+  btn.disabled = true;
+  btn.textContent = "НАДСИЛАЄМО…";
+  msg.textContent = "";
+});
+
+sink.addEventListener("load", () => {
+  if (!submitted) return;
+
+  submitted = false;
+  form.reset();
+  btn.disabled = false;
+  btn.textContent = "ПІДТВЕРДИТИ ПРИСУТНІСТЬ";
+  msg.innerHTML = "Дякуємо 🤍 Ваша відповідь надіслана.";
 });
 </script>
 </body>
